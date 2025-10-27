@@ -4,6 +4,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
+* [Setup](#set-up)
 
 ## General info
 This Python project is designed to help users stay organised and motivated while managing their daily tasks. Most to-do lists are purely functional by allowing users to tick off their tasks, without providing any motivation for the user. This prototype solves this problem by displaying a confetti GIF and motivational quote to provide motivation to the user to finish all their tasks. 
@@ -15,3 +16,6 @@ Project is created with:
 * Pillow (PIL)
 * Random
 * Itertools
+
+## Setup
+Please install Pillow and download the attached GIF and ensure it is in the same folder as the Python file before running the project
