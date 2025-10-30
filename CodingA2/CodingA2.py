@@ -10,7 +10,7 @@ from PIL import Image, ImageTk
 #Create class for Gif animation
 class ImageLabel(tk.Label):
     def load(self, im): #Define function to load the Gif
-        if isinstance(im, str): #Use a conditional statement to check if the input is a file path string
+        if isinstance(im, str): #Using a conditional statement, check if the input is a file path string
             im = Image.open(im) #Open the image file
 
         frames = [] #Create a list to store the frames of the Gif
