@@ -10,12 +10,12 @@ from PIL import Image, ImageTk
 #Create class for Gif animation
 class ImageLabel(tk.Label):
     def load(self, im): #Define function to load the Gif
-        if isinstance(im, str): #Check if the input is a file path string
+        if isinstance(im, str): #Use a conditional statement to check if the input is a file path string
             im = Image.open(im) #Open the image file
 
         frames = [] #Create a list to store the frames of the Gif
         try:
-            for i in count(0): #Loop through each frame of the Gif
+            for i in count(0): #Using a (for) loop to loop through each frame of the Gif
                 frames.append(ImageTk.PhotoImage(im.copy())) #Convert each frame to a PhotoImage and add it to the frames list
                 im.seek(i) #Move to the next frame
         except EOFError:
@@ -30,7 +30,7 @@ class ImageLabel(tk.Label):
         current_image = self.frames[frame_index] #Get the current frame
         self.config(image=current_image) #Set the label to display the current frame
         frame_index += 1 #Move to the next frame
-        if frame_index < len(self.frames): #If there are more frames
+        if frame_index < len(self.frames): #Using a conditional statement, if there are more frames
             self.after(self.delay, self.next_frame, frame_index) #Schedule the next frame to be displayed after the delay
 
     #Define function to stop and clear the Gif
@@ -103,12 +103,12 @@ scrollbar.pack(side="right", fill="y")
 
 #Create list to store all checkboxes
 checkboxes = []
-#Create global variable to track if first task completed
+#Create global Boolean variable to track if first task completed
 first_task_done = False
-#Create global variable to store reference to Finish All button
+#Create global NoneType variable to store reference to Finish All button
 finish_button = None
 
-#Create list of motivational quotes for the completion of the first task
+#Create a list of strings containing motivational quotes for the completion of the first task
 first_quote = [
     "First one done, you've got this!",
     "Great start, keep going!",
@@ -120,7 +120,7 @@ first_quote = [
     "Your day is off to a fantastic start!"
 ]
 
-#Create list of motivational quotes for the completion of subsequent tasks
+#Create a list of strings containing motivational quotes for the completion of subsequent tasks
 other_quotes = [
     "Another task down, you're unstoppable!",
     "Another one done, you're on fire!",
@@ -132,7 +132,7 @@ other_quotes = [
     "You're unstoppable, keep it up!"
 ]
 
-#Create list of motivational quotes for finishing all tasks
+#Create list of strings containing motivational quotes for finishing all tasks
 finish_all_quotes = [
     "Great work, all tasks cleared!",
     "All tasks done, time to relax!",
@@ -176,9 +176,9 @@ def show_confetti_overlay(quote_text):
 def show_confetti():
     global first_task_done #Access global variable to track if first task completed
 
-    if not first_task_done: #If this is the first task completed
+    if not first_task_done: #Using a conditional statement, if this is the first task completed
         quote = random.choice(first_quote) #Randomly select a quote from the first task quotes
-        first_task_done = True #Set first task completed to True
+        first_task_done = True #Update Boolean variable when first task is done
     else:
         quote = random.choice(other_quotes) #Randomly select a quote from the other task quotes
     show_confetti_overlay(quote) #Show confetti overlay with the selected quote
@@ -193,7 +193,7 @@ def finish_all():
     checkboxes.clear() #Clear the list of checkboxes
     first_task_done = False #Reset first task completed to False
 
-    if finish_button:
+    if finish_button: #Using a conditional statement
         finish_button.destroy() #Remove the Finish All button
         finish_button = None #Reset Finish All button reference
 
@@ -205,7 +205,7 @@ def add_task(event=None):
     global finish_button, checkboxes #Access global variables
 
     task_text = task_entry.get() #Get text from the entry box
-    if not task_text: 
+    if not task_text: #Using a conditional statement
         return #Ignore empty task entries
 
     #Create variable to check if checkbox is checked
@@ -233,7 +233,7 @@ def add_task(event=None):
     #Clear the entry box
     task_entry.delete(0, tk.END)
 
-    #If the clear button is not already displayed, create and display it
+    #Using a conditional statement, if the clear button is not already displayed, create and display it
     if finish_button is None:
         finish_button = tk.Button(
             interface,
